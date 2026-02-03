@@ -1,0 +1,145 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Inter, system-ui, sans-serif;
+}
+
+body {
+  background: #0b0b0b;
+  color: #f2f2f2;
+  overflow-x: hidden;
+}
+
+/* subtle grain */
+.noise {
+  position: fixed;
+  inset: 0;
+  background: url("https://grainy-gradients.vercel.app/noise.svg");
+  opacity: 0.08;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 100px;
+  gap: 80px;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-text {
+  max-width: 420px;
+}
+
+.hero-text h1 {
+  font-size: 3.2rem;
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+.hero-text p {
+  margin-top: 20px;
+  color: #bdbdbd;
+}
+
+.links {
+  margin-top: 30px;
+  display: flex;
+  gap: 24px;
+}
+
+.links a {
+  color: #f2f2f2;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: 0.3s;
+}
+
+.links a:hover {
+  border-color: #f2f2f2;
+  opacity: 0.7;
+}
+
+/* IMAGE */
+.hero-image img {
+  width: 340px;
+  filter: grayscale(100%);
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 1.2s ease;
+}
+
+/* SECTION */
+.section {
+  padding: 140px 100px;
+  max-width: 700px;
+}
+
+.section h2 {
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+}
+
+/* ANIMATIONS */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 1s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.delay {
+  transition-delay: 0.2s;
+}
+
+.delay2 {
+  transition-delay: 0.4s;
+}
+
+.hero-image.active img {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* MOBILE — PARTIAL IMAGE VIEW */
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+    padding: 80px 24px 40px;
+    text-align: center;
+  }
+
+  .hero-image {
+    position: absolute;
+    top: 20px;
+    right: -90px; /* hides half image */
+    opacity: 0.85;
+    pointer-events: none;
+  }
+
+  .hero-image img {
+    width: 260px;
+  }
+
+  .hero-text {
+    z-index: 2;
+  }
+
+  .links {
+    justify-content: center;
+  }
+
+  .section {
+    padding: 100px 24px;
+  }
+}
